@@ -15,7 +15,7 @@ public class SimpleRestarter : MonoBehaviour
     {
 
         resetAction.action.started += StartResetAction;
-        resetAction.action.performed += CompleteResetAction;
+        resetAction.action.canceled += CancelResetAction;
     }
 
     void StartResetAction(InputAction.CallbackContext obj)
@@ -26,7 +26,7 @@ public class SimpleRestarter : MonoBehaviour
 
  
 
-    void CompleteResetAction(InputAction.CallbackContext obj)
+    void CancelResetAction(InputAction.CallbackContext obj)
     {
         Debug.Log("Complete reset");
         if (Time.time > buttonStartTime + pressTimeInSeconds)
