@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class Collector : MonoBehaviour
 {
     public TextMeshPro text;
+    public bool destroyOnCollect = true;
+    public UnityEvent onCollect;
     int count = 0;
 
     private void Start()
@@ -19,9 +22,10 @@ public class Collector : MonoBehaviour
         if(collectable != null)
         {
             count++;
-            UpdateText();
             collectable.onCollect.Invoke();
-            Destroy(other.gameObject);
+            onCollect.Invoke();
+            UpdateText();
+            if (destroyOnCollect) Destroy(other.gameObject);
         }
     }
 
