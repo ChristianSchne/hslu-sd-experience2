@@ -13,7 +13,8 @@ public class SimpleRestarter : MonoBehaviour
 
     void Start()
     {
-
+        if (resetAction == null)
+            return;
         resetAction.action.started += StartResetAction;
         resetAction.action.canceled += CancelResetAction;
     }
