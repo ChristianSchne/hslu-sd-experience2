@@ -21,11 +21,14 @@ public class Collector : MonoBehaviour
         Collectable collectable = other.GetComponent<Collectable>();
         if(collectable != null)
         {
-            count++;
+            count = count + 1;
             collectable.onCollect.Invoke();
             onCollect.Invoke();
             UpdateText();
-            if (destroyOnCollect) Destroy(other.gameObject);
+            if (destroyOnCollect)
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 
